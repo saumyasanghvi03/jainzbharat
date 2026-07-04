@@ -1,0 +1,3 @@
+import { NextResponse } from 'next/server';
+import { parseJainZId } from '@/lib/jainz-id';
+export async function GET(request: Request) { const id = new URL(request.url).searchParams.get('jainzId') ?? 'JZB-2026-000001'; if (!parseJainZId(id)) return NextResponse.json({ error: 'Invalid JainZ ID' }, { status: 400 }); return NextResponse.json({ linkedin: `JainZBharat Declaration Signatory · ${id}`, githubMarkdown: `[![JainZBharat](https://img.shields.io/badge/JainZBharat-${id}-d7b56d)](https://jainzbharat.vercel.app/jainz/${id})`, embed: `<a href="https://jainzbharat.vercel.app/jainz/${id}">JainZBharat ${id}</a>` }); }
