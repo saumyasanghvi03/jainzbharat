@@ -1,0 +1,215 @@
+# JainZBharat Product Roadmap
+
+> Copilot: update this file after every milestone. When a feature is production-ready, verified, and committed, change its checkbox from `[ ]` to `[x]` in the same milestone PR.
+
+This roadmap tracks the complete JainZBharat digital civilization platform. A checkbox should be marked complete only when the feature is implemented, tested, documented where needed, and deployable on Vercel without temporary framework stubs or dependency workarounds.
+
+## Phase 1 — Production Foundation and Core Identity
+
+- [x] Landing Page
+- [x] About Page
+- [x] Declaration Page
+- [x] Declaration Version History
+- [ ] Declaration Version Comparison
+- [ ] Clerk Auth
+- [ ] Google Login
+- [ ] GitHub Login
+- [ ] Email Login
+- [ ] Protected Routes
+- [ ] Role Based Access Control
+- [ ] Supabase PostgreSQL Integration
+- [ ] Supabase Migrations
+- [ ] Supabase Seed Data
+- [ ] Supabase Row Level Security Policies
+- [ ] Supabase Storage Buckets
+- [ ] JainZ ID Generation
+- [ ] JainZ ID Uniqueness Guarantees
+- [ ] JainZ ID QR Code
+- [ ] Public JainZ ID Profiles
+- [ ] Profile Settings
+- [ ] Digital Signing Wall
+- [ ] Declaration Signing API
+- [ ] Signatory Search
+- [ ] Signatory Filters
+- [ ] Signatory Sorting
+- [ ] Signatory Grid View
+- [ ] Signatory Map View
+- [ ] Certificate Generator
+- [ ] Certificate PDF Download
+- [ ] Certificate Printable Layout
+- [ ] Certificate QR Verification
+- [ ] LinkedIn Badge Generator
+- [ ] GitHub README Badge Generator
+- [ ] Profile Badge
+- [ ] Embeddable Widget Badge
+- [ ] Responsive Navigation
+- [ ] Footer
+- [ ] Dark Mode First Design System
+- [ ] Accessibility Baseline
+- [ ] SEO Metadata
+- [ ] OpenGraph Metadata
+- [ ] Twitter Cards
+- [ ] Schema.org JSON-LD
+- [ ] Sitemap
+- [ ] RSS Feed
+- [ ] Robots Policy
+- [ ] Secure Headers
+- [ ] Rate Limiting
+- [ ] CSRF Protection
+- [ ] XSS Protection
+- [ ] Error Boundaries
+- [ ] 404 Page
+- [ ] 500 Error Experience
+- [ ] Loading States
+- [ ] Empty States
+- [ ] Retry Patterns
+- [ ] README
+- [ ] Architecture Documentation
+- [ ] API Documentation
+- [ ] Database Documentation
+- [ ] Deployment Guide
+- [ ] Contributing Guide
+- [ ] Developer Guide
+- [ ] GitHub Actions CI
+- [ ] Vercel Deployment Configuration
+- [ ] Production pnpm Lockfile
+- [ ] Real Framework Dependencies
+- [ ] Removal of Temporary Framework Stubs
+
+## Phase 2 — Directories, Events, Search, and Contribution
+
+- [ ] Community Dashboard
+- [ ] Contribution Dashboard
+- [ ] Contribution Score
+- [ ] Achievements
+- [ ] Badges
+- [ ] Volunteer Hours Tracking
+- [ ] Mentorship Tracking
+- [ ] Courses Progress
+- [ ] Projects Portfolio
+- [ ] Followers
+- [ ] Following
+- [ ] Founder Directory
+- [ ] Founder Startup Profiles
+- [ ] Founder Industry Filters
+- [ ] Founder Stage Filters
+- [ ] Founder Funding Fields
+- [ ] Founder Location Filters
+- [ ] Founder Looking-For Filters
+- [ ] Founder Bookmarks
+- [ ] Student Directory
+- [ ] Professional Directory
+- [ ] Volunteer Directory
+- [ ] Mentor Directory
+- [ ] Sangh Directory
+- [ ] Sangh Claim Listing
+- [ ] Sangh Verification Badge
+- [ ] Sangh Committee Profiles
+- [ ] Sangh Youth Wing Profiles
+- [ ] Sangh Volunteer Opportunities
+- [ ] Temple Directory
+- [ ] NGO Directory
+- [ ] Events Module
+- [ ] Global Calendar
+- [ ] Temple Events
+- [ ] Meditation Events
+- [ ] Paryushan Events
+- [ ] Mahavir Jayanti Events
+- [ ] Hackathons
+- [ ] Startup Meetups
+- [ ] Youth Meetups
+- [ ] Workshops
+- [ ] Event RSVP
+- [ ] Event QR Check-in
+- [ ] Event Attendance
+- [ ] Event Certificates
+- [ ] Event Photo Gallery
+- [ ] News
+- [ ] Blog
+- [ ] Newsletter
+- [ ] Resources
+- [ ] Learning Hub
+- [ ] Meditation Hub
+- [ ] Global Search
+- [ ] Postgres Full Text Search
+- [ ] Notifications
+- [ ] Version History Platform
+- [ ] API Documentation Portal
+
+## Phase 3 — Maps, Navkar, Analytics, Admin, and Operations
+
+- [ ] Interactive Globe
+- [ ] Interactive World Map
+- [ ] Map Layer Toggles
+- [ ] Signatories Map Layer
+- [ ] Founders Map Layer
+- [ ] Students Map Layer
+- [ ] Mentors Map Layer
+- [ ] Events Map Layer
+- [ ] Sanghs Map Layer
+- [ ] Temples Map Layer
+- [ ] Volunteer Work Map Layer
+- [ ] Map Time Range Filters
+- [ ] Map Country Filters
+- [ ] Map Profession Filters
+- [ ] Navkar Tracker
+- [ ] Anonymous Navkar Contribution Flow
+- [ ] Global Navkar Heatmap
+- [ ] Daily Navkar Statistics
+- [ ] Weekly Navkar Statistics
+- [ ] Monthly Navkar Statistics
+- [ ] All-Time Navkar Statistics
+- [ ] Navkar City Leaderboard
+- [ ] Navkar Country Leaderboard
+- [ ] Navkar Continent Leaderboard
+- [ ] Analytics Dashboard
+- [ ] PostHog Analytics
+- [ ] Vercel Analytics
+- [ ] Web Vitals
+- [ ] Sentry Monitoring
+- [ ] Structured Logging
+- [ ] Performance Monitoring
+- [ ] Admin Dashboard
+- [ ] Admin Verification Queue
+- [ ] Admin Moderation Queue
+- [ ] Admin Reports
+- [ ] Admin Users
+- [ ] Admin Events
+- [ ] Admin Certificates
+- [ ] Admin Directories
+- [ ] Admin Analytics
+- [ ] Admin Audit Logs
+- [ ] Secure File Uploads
+- [ ] File Validation
+- [ ] CAPTCHA
+- [ ] Email Verification
+- [ ] OWASP Security Review
+- [ ] Unit Tests
+- [ ] Integration Tests
+- [ ] Playwright E2E Tests
+- [ ] Accessibility Tests
+- [ ] Performance Tests
+- [ ] Lighthouse 95+ Validation
+
+## Phase 4 — Long-Term Platform Expansion
+
+- [ ] JainGPT AI Assistant
+- [ ] JainZ Passport
+- [ ] Temple Heritage Archive
+- [ ] Digital Library
+- [ ] Scholarship Portal
+- [ ] Jobs Portal
+- [ ] Marketplace
+- [ ] Volunteer Network
+- [ ] Mentorship Platform
+- [ ] Startup Accelerator
+- [ ] Youth Chapters
+- [ ] Research Hub
+- [ ] Open Source Hub
+- [ ] Developer API
+- [ ] Mobile Apps
+- [ ] Offline Support
+- [ ] Payments with Stripe
+- [ ] React PDF Advanced Certificate Templates
+- [ ] Multi-language Support
+- [ ] Community Governance Workflows

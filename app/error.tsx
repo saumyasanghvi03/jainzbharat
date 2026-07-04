@@ -1,0 +1,2 @@
+'use client';
+export default function ErrorPage({ error, reset }: { error: Error; reset: () => void }) { return <section className="mx-auto max-w-3xl px-4 py-24 text-center"><p className="text-gold">Error</p><h1 className="mt-4 text-5xl font-semibold">Something went wrong</h1><p className="mt-4 text-slate-400">{error.message}</p><button className="mt-8 rounded-full bg-white px-5 py-3 font-semibold text-black" onClick={reset}>Try again</button></section>; }
