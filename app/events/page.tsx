@@ -1,6 +1,5 @@
 import { Card } from '@/components/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 
 const events = [
   { title: 'Global Jain Youth Summit', date: 'Aug 15, 2026', location: 'Mumbai, India', type: 'Conference', capacity: 500 },
@@ -19,7 +18,10 @@ export default function EventsPage() {
       <p className="mt-4 max-w-2xl text-muted-foreground">RSVP, check in with QR codes, earn attendance certificates, and connect with the community.</p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {events.map((e) => (
-          <Card key={e.title}>
+          <Card key={e.title} className="relative">
+            <div className="absolute -top-2.5 right-4">
+              <span className="rounded-full border border-primary/30 bg-background px-3 py-1 text-xs font-semibold text-primary">Coming Soon</span>
+            </div>
             <div className="flex items-center justify-between">
               <Badge variant="accent">{e.type}</Badge>
               <span className="text-xs text-muted-foreground">{e.capacity} seats</span>
