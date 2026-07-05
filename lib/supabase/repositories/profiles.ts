@@ -33,6 +33,33 @@ export async function updateProfile(clerkUserId: string, updates: Record<string,
   return data as Profile | null;
 }
 
+export async function getProfileEditCooldown(clerkUserId: string): Promise<{ canEdit: boolean; remainingDays: number; nextEditAt: string | null }> {
+  const supabase = getSupabaseAdminClient();
+  const { data } = await (supabase.from('profiles') as any).select('profile_edited_at').eq('clerk_user_id', clerkUserId).maybeSingle();
+  if (!data?.profile_edited_at) {
+    return { canEdit: true, remainingDays: 0, nextEditAt: null };
+  }
+  const lastEdit = new Date(data.profile_edited_at);
+  const nextAllowed = new Date(lastEdit.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const now = new Date();
+  if (now >= nextAllowed) {
+    return { canEdit: true, remainingDays: 0, nextEditAt: null };
+  }
+  const remainingMs = nextAllowed.getTime() - now.getTime();
+  const remainingDays = Math.ceil(remainingMs / (24 * 60 * 60 * 1000));
+  return { canEdit: false, remainingDays, nextEditAt: nextAllowed.toISOString() };
+}
+
+export async function updateProfileWithCooldown(clerkUserId: string, updates: Record<string, unknown>): Promise<{ data: Profile | null; error: string | null }> {
+  const { canEdit, remainingDays, nextEditAt } = await getProfileEditCooldown(clerkUserId);
+  if (!canEdit) {
+    return { data: null, error: `Profile can be edited again in ${remainingDays} day(s). Next edit available at ${nextEditAt}.` };
+  }
+  const now = new Date().toISOString();
+  const data = await updateProfile(clerkUserId, { ...updates, profile_edited_at: now });
+  return { data, error: data ? null : 'Failed to update profile' };
+}
+
 export async function searchProfiles(query: string): Promise<Profile[]> {
   const supabase = getSupabaseAdminClient();
   const { data } = await supabase.from('profiles').select('*').textSearch('profiles_search_idx', query, { type: 'websearch' } as any).limit(20);

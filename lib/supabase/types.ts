@@ -32,6 +32,7 @@ export interface Profile {
   contribution_score: number;
   volunteer_hours: number;
   navkar_count: number;
+  profile_edited_at: string | null;
   created_at: string;
   updated_at: string;
 }
