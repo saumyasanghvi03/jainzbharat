@@ -1,36 +1,47 @@
 import { Card } from '@/components/card';
 import { Badge } from '@/components/ui/badge';
-
-const events = [
-  { title: 'Global Jain Youth Summit', date: 'Aug 15, 2026', location: 'Mumbai, India', type: 'Conference', capacity: 500 },
-  { title: 'Ahimsa Hackathon', date: 'Sep 5, 2026', location: 'Bangalore, India', type: 'Hackathon', capacity: 200 },
-  { title: 'Meditation Retreat', date: 'Oct 10, 2026', location: 'Rishikesh, India', type: 'Retreat', capacity: 100 },
-  { title: 'Founder Meetup', date: 'Nov 20, 2026', location: 'San Francisco, USA', type: 'Networking', capacity: 150 },
-];
+import { listEventSubmissions } from '@/lib/supabase/repositories/event_submissions';
+import { CalendarDays, MapPin, Users } from 'lucide-react';
 
 export const metadata = { title: 'Global Calendar' };
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const { data: events } = await listEventSubmissions({ status: 'published', limit: 50 });
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
       <Badge variant="default">Global Calendar</Badge>
       <h1 className="mt-4 max-w-4xl font-heading text-4xl font-semibold tracking-tight md:text-6xl">Discover events and gatherings worldwide.</h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">RSVP, check in with QR codes, earn attendance certificates, and connect with the community.</p>
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
-        {events.map((e) => (
-          <Card key={e.title} className="relative">
-            <div className="absolute -top-2.5 right-4">
-              <span className="rounded-full border border-primary/30 bg-background px-3 py-1 text-xs font-semibold text-primary">Coming Soon</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <Badge variant="accent">{e.type}</Badge>
-              <span className="text-xs text-muted-foreground">{e.capacity} seats</span>
-            </div>
-            <div className="mt-3 font-heading text-xl font-semibold">{e.title}</div>
-            <div className="mt-1 text-sm text-muted-foreground">{e.date} · {e.location}</div>
-          </Card>
-        ))}
-      </div>
+
+      {events.length === 0 ? (
+        <Card className="mt-8 text-center">
+          <CalendarDays className="mx-auto size-12 text-muted-foreground/40" />
+          <p className="mt-3 text-sm text-muted-foreground">No upcoming events right now. Check back soon or submit your own event!</p>
+        </Card>
+      ) : (
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {events.map((e) => (
+            <Card key={e.id} className="relative">
+              <div className="flex items-center justify-between">
+                <Badge variant="accent">{e.category}</Badge>
+                {e.capacity && <span className="text-xs text-muted-foreground"><Users className="mr-1 inline size-3.5" />{e.capacity} seats</span>}
+              </div>
+              <div className="mt-3 font-heading text-xl font-semibold">{e.title}</div>
+              <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{e.description}</p>
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1"><CalendarDays className="size-3.5" />{new Date(e.starts_at).toLocaleDateString()}</span>
+                {e.venue && <span className="flex items-center gap-1"><MapPin className="size-3.5" />{e.venue}</span>}
+              </div>
+              {e.registration_link && (
+                <a href={e.registration_link} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">
+                  Register →
+                </a>
+              )}
+            </Card>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

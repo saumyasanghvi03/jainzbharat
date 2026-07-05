@@ -71,3 +71,9 @@ export async function getProfilesByRole(role: Profile['role']): Promise<Profile[
   const { data } = await supabase.from('profiles').select('*').eq('role', role).limit(50);
   return (data ?? []) as Profile[];
 }
+
+export async function getAdminProfiles(): Promise<Pick<Profile, 'id' | 'display_name' | 'jainz_id' | 'role'>[]> {
+  const supabase = getSupabaseAdminClient();
+  const { data } = await supabase.from('profiles').select('id, display_name, jainz_id, role').order('created_at', { ascending: true }).limit(200);
+  return (data ?? []) as Pick<Profile, 'id' | 'display_name' | 'jainz_id' | 'role'>[];
+}

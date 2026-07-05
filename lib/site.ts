@@ -35,5 +35,10 @@ export const platformModules = [
   { slug: 'events', title: 'Global Calendar', description: 'Events, RSVP, QR check-in, attendance, galleries, certificates, and calendar filters.' },
   { slug: 'learning', title: 'Learning Hub', description: 'Courses, reading paths, resources, meditation, values education, and lifelong learning.' },
   { slug: 'navkar-heatmap', title: 'Navkar Tracker', description: 'Privacy-first practice tracker with anonymous aggregate contribution to global heatmaps.' },
+  { slug: 'clubs', title: 'Clubs & Kalyanmitra', description: 'Discover and join community clubs and Kalyanmitra seva groups worldwide.' },
+  { slug: 'organizations', title: 'Organizations', description: 'Directory of registered organizations including sanghs, temples, trusts, and NGOs.' },
+  { slug: 'discussions', title: 'Discussions', description: 'Forum for community conversations, Q&A, and knowledge sharing.' },
+  { slug: 'chat', title: 'Community Chat', description: 'Real-time messaging with fellow community members.' },
+  { slug: 'feed', title: 'Community Feed', description: 'Latest updates, announcements, and activities from across the platform.' },
   { slug: 'admin', title: 'Admin Dashboard', description: 'Verification, moderation, reports, users, analytics, audit logs, and role-based controls.' },
 ];

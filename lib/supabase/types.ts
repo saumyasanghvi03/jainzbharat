@@ -64,6 +64,7 @@ export interface ProfileUpdate {
   contribution_score?: number;
   volunteer_hours?: number;
   navkar_count?: number;
+  jainz_id?: string;
 }
 
 // ──────────────────────────────────────────────
@@ -672,6 +673,580 @@ export interface AuditLogInsert {
 }
 
 // ──────────────────────────────────────────────
+// TABLE: clubs
+// ──────────────────────────────────────────────
+
+export type ClubPrivacy = 'public' | 'private';
+export type ClubMemberRole = 'owner' | 'admin' | 'moderator' | 'member';
+export type ClubMemberStatus = 'active' | 'pending' | 'banned';
+
+export interface Club {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  mission: string | null;
+  logo_url: string | null;
+  banner_url: string | null;
+  privacy: ClubPrivacy;
+  founder_id: string | null;
+  member_count: number;
+  verification_status: VerificationStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ClubInsert {
+  name: string;
+  slug: string;
+  description?: string | null;
+  mission?: string | null;
+  logo_url?: string | null;
+  banner_url?: string | null;
+  privacy?: ClubPrivacy;
+  founder_id?: string | null;
+  member_count?: number;
+  verification_status?: VerificationStatus;
+}
+
+export interface ClubUpdate {
+  name?: string;
+  description?: string | null;
+  mission?: string | null;
+  logo_url?: string | null;
+  banner_url?: string | null;
+  privacy?: ClubPrivacy;
+  member_count?: number;
+  verification_status?: VerificationStatus;
+}
+
+export interface ClubMember {
+  id: string;
+  club_id: string;
+  profile_id: string;
+  role: ClubMemberRole;
+  status: ClubMemberStatus;
+  joined_at: string;
+}
+
+export interface ClubMemberInsert {
+  club_id: string;
+  profile_id: string;
+  role?: ClubMemberRole;
+  status?: ClubMemberStatus;
+}
+
+export interface ClubMemberUpdate {
+  role?: ClubMemberRole;
+  status?: ClubMemberStatus;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: kalyanmitra_groups
+// ──────────────────────────────────────────────
+
+export type KalyanmitraCategory = 'blood_donation' | 'education' | 'animal_welfare' | 'healthcare' | 'temple_service' | 'disaster_relief' | 'environment' | 'food_distribution' | 'community_service';
+export type KalyanmitraMemberRole = 'owner' | 'admin' | 'moderator' | 'member';
+
+export interface KalyanmitraGroup {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  category: KalyanmitraCategory | null;
+  logo_url: string | null;
+  banner_url: string | null;
+  founder_id: string | null;
+  member_count: number;
+  city: string | null;
+  country: string | null;
+  verification_status: VerificationStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface KalyanmitraGroupInsert {
+  name: string;
+  slug: string;
+  description?: string | null;
+  category?: KalyanmitraCategory | null;
+  logo_url?: string | null;
+  banner_url?: string | null;
+  founder_id?: string | null;
+  member_count?: number;
+  city?: string | null;
+  country?: string | null;
+  verification_status?: VerificationStatus;
+}
+
+export interface KalyanmitraGroupUpdate {
+  name?: string;
+  description?: string | null;
+  category?: KalyanmitraCategory | null;
+  logo_url?: string | null;
+  banner_url?: string | null;
+  member_count?: number;
+  city?: string | null;
+  country?: string | null;
+  verification_status?: VerificationStatus;
+}
+
+export interface KalyanmitraMember {
+  id: string;
+  group_id: string;
+  profile_id: string;
+  role: KalyanmitraMemberRole;
+  status: ClubMemberStatus;
+  volunteer_hours: number;
+  joined_at: string;
+}
+
+export interface KalyanmitraMemberInsert {
+  group_id: string;
+  profile_id: string;
+  role?: KalyanmitraMemberRole;
+  status?: ClubMemberStatus;
+  volunteer_hours?: number;
+}
+
+export interface KalyanmitraMemberUpdate {
+  role?: KalyanmitraMemberRole;
+  status?: ClubMemberStatus;
+  volunteer_hours?: number;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: organization_members
+// ──────────────────────────────────────────────
+
+export type OrganizationMemberRole = 'owner' | 'admin' | 'member';
+export type OrganizationMemberStatus = 'active' | 'pending' | 'banned';
+
+export interface OrganizationMember {
+  id: string;
+  organization_id: string;
+  profile_id: string;
+  role: OrganizationMemberRole;
+  status: OrganizationMemberStatus;
+  joined_at: string;
+}
+
+export interface OrganizationMemberInsert {
+  organization_id: string;
+  profile_id: string;
+  role?: OrganizationMemberRole;
+  status?: OrganizationMemberStatus;
+}
+
+export interface OrganizationMemberUpdate {
+  role?: OrganizationMemberRole;
+  status?: OrganizationMemberStatus;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: forum_categories
+// ──────────────────────────────────────────────
+
+export interface ForumCategory {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  sort_order: number;
+  club_id: string | null;
+  created_at: string;
+}
+
+export interface ForumCategoryInsert {
+  name: string;
+  slug: string;
+  description?: string | null;
+  sort_order?: number;
+  club_id?: string | null;
+}
+
+export interface ForumCategoryUpdate {
+  name?: string;
+  description?: string | null;
+  sort_order?: number;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: forum_topics
+// ──────────────────────────────────────────────
+
+export interface ForumTopic {
+  id: string;
+  category_id: string;
+  title: string;
+  slug: string;
+  author_id: string;
+  pinned: boolean;
+  solved: boolean;
+  view_count: number;
+  reply_count: number;
+  tags: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ForumTopicInsert {
+  category_id: string;
+  title: string;
+  slug: string;
+  author_id: string;
+  pinned?: boolean;
+  solved?: boolean;
+  tags?: string[];
+}
+
+export interface ForumTopicUpdate {
+  title?: string;
+  pinned?: boolean;
+  solved?: boolean;
+  tags?: string[];
+}
+
+// ──────────────────────────────────────────────
+// TABLE: forum_posts
+// ──────────────────────────────────────────────
+
+export interface ForumPost {
+  id: string;
+  topic_id: string;
+  author_id: string;
+  content: string;
+  is_first_post: boolean;
+  upvotes: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ForumPostInsert {
+  topic_id: string;
+  author_id: string;
+  content: string;
+  is_first_post?: boolean;
+}
+
+export interface ForumPostUpdate {
+  content?: string;
+  upvotes?: number;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: forum_likes
+// ──────────────────────────────────────────────
+
+export interface ForumLike {
+  id: string;
+  post_id: string;
+  profile_id: string;
+  created_at: string;
+}
+
+export interface ForumLikeInsert {
+  post_id: string;
+  profile_id: string;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: chat_conversations
+// ──────────────────────────────────────────────
+
+export type ChatConversationType = 'direct' | 'group' | 'club' | 'event';
+
+export interface ChatConversation {
+  id: string;
+  type: ChatConversationType;
+  name: string | null;
+  club_id: string | null;
+  event_id: string | null;
+  created_at: string;
+}
+
+export interface ChatConversationInsert {
+  type: ChatConversationType;
+  name?: string | null;
+  club_id?: string | null;
+  event_id?: string | null;
+}
+
+export interface ChatConversationUpdate {
+  name?: string | null;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: chat_participants
+// ──────────────────────────────────────────────
+
+export interface ChatParticipant {
+  id: string;
+  conversation_id: string;
+  profile_id: string;
+  last_read_at: string | null;
+  is_online: boolean;
+  joined_at: string;
+}
+
+export interface ChatParticipantInsert {
+  conversation_id: string;
+  profile_id: string;
+  is_online?: boolean;
+}
+
+export interface ChatParticipantUpdate {
+  last_read_at?: string | null;
+  is_online?: boolean;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: chat_messages
+// ──────────────────────────────────────────────
+
+export type ChatMessageType = 'text' | 'image' | 'file' | 'gif' | 'system';
+
+export interface ChatMessage {
+  id: string;
+  conversation_id: string;
+  sender_id: string;
+  content: string;
+  message_type: ChatMessageType;
+  file_url: string | null;
+  reply_to_id: string | null;
+  created_at: string;
+}
+
+export interface ChatMessageInsert {
+  conversation_id: string;
+  sender_id: string;
+  content: string;
+  message_type?: ChatMessageType;
+  file_url?: string | null;
+  reply_to_id?: string | null;
+}
+
+export interface ChatMessageUpdate {
+  content?: string;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: chat_reactions
+// ──────────────────────────────────────────────
+
+export interface ChatReaction {
+  id: string;
+  message_id: string;
+  profile_id: string;
+  emoji: string;
+  created_at: string;
+}
+
+export interface ChatReactionInsert {
+  message_id: string;
+  profile_id: string;
+  emoji: string;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: community_feeds
+// ──────────────────────────────────────────────
+
+export type FeedType = 'announcement' | 'post' | 'event' | 'volunteer' | 'club' | 'discussion';
+
+export interface CommunityFeed {
+  id: string;
+  profile_id: string;
+  feed_type: FeedType;
+  title: string;
+  content: string | null;
+  link: string | null;
+  source_id: string | null;
+  created_at: string;
+}
+
+export interface CommunityFeedInsert {
+  profile_id: string;
+  feed_type: FeedType;
+  title: string;
+  content?: string | null;
+  link?: string | null;
+  source_id?: string | null;
+}
+
+export interface CommunityFeedUpdate {
+  title?: string;
+  content?: string | null;
+  link?: string | null;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: event_submissions
+// ──────────────────────────────────────────────
+
+export type EventSubmissionCategory = 'conference' | 'hackathon' | 'retreat' | 'networking' | 'workshop' | 'seminar' | 'cultural' | 'other';
+export type EventSubmissionStatus = 'draft' | 'submitted' | 'approved' | 'published' | 'completed' | 'cancelled';
+
+export interface EventSubmission {
+  id: string;
+  organizer_id: string;
+  title: string;
+  slug: string;
+  description: string;
+  category: EventSubmissionCategory;
+  venue: string | null;
+  google_maps_link: string | null;
+  starts_at: string;
+  ends_at: string;
+  capacity: number | null;
+  registration_link: string | null;
+  banner_url: string | null;
+  tags: string[];
+  status: EventSubmissionStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface EventSubmissionInsert {
+  organizer_id: string;
+  title: string;
+  slug: string;
+  description: string;
+  category: EventSubmissionCategory;
+  venue?: string | null;
+  google_maps_link?: string | null;
+  starts_at: string;
+  ends_at: string;
+  capacity?: number | null;
+  registration_link?: string | null;
+  banner_url?: string | null;
+  tags?: string[];
+  status?: EventSubmissionStatus;
+}
+
+export interface EventSubmissionUpdate {
+  title?: string;
+  description?: string;
+  category?: EventSubmissionCategory;
+  venue?: string | null;
+  google_maps_link?: string | null;
+  starts_at?: string;
+  ends_at?: string;
+  capacity?: number | null;
+  registration_link?: string | null;
+  banner_url?: string | null;
+  tags?: string[];
+  status?: EventSubmissionStatus;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: diary_entries
+// ──────────────────────────────────────────────
+
+export type DiaryPrivacy = 'private' | 'friends' | 'community' | 'public';
+export type DiaryJournalType = 'personal' | 'learning' | 'reading' | 'meditation' | 'volunteer' | 'gratitude' | 'reflection';
+
+export interface DiaryEntry {
+  id: string;
+  profile_id: string;
+  title: string;
+  content: string;
+  content_encrypted: boolean;
+  mood: string | null;
+  gratitude: string | null;
+  goals: string | null;
+  reflections: string | null;
+  journal_type: DiaryJournalType;
+  privacy: DiaryPrivacy;
+  is_highlight: boolean;
+  highlight_summary: string | null;
+  highlight_media: unknown[];
+  tags: string[];
+  published_at: string | null;
+  entry_date: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+}
+
+export interface DiaryEntryInsert {
+  profile_id: string;
+  title: string;
+  content?: string;
+  content_encrypted?: boolean;
+  mood?: string | null;
+  gratitude?: string | null;
+  goals?: string | null;
+  reflections?: string | null;
+  journal_type?: DiaryJournalType;
+  privacy?: DiaryPrivacy;
+  is_highlight?: boolean;
+  highlight_summary?: string | null;
+  highlight_media?: unknown[];
+  tags?: string[];
+  entry_date?: string;
+}
+
+export interface DiaryEntryUpdate {
+  title?: string;
+  content?: string;
+  mood?: string | null;
+  gratitude?: string | null;
+  goals?: string | null;
+  reflections?: string | null;
+  journal_type?: DiaryJournalType;
+  privacy?: DiaryPrivacy;
+  is_highlight?: boolean;
+  highlight_summary?: string | null;
+  highlight_media?: unknown[];
+  tags?: string[];
+  published_at?: string | null;
+  deleted_at?: string | null;
+}
+
+// ──────────────────────────────────────────────
+// TABLE: diary_drafts
+// ──────────────────────────────────────────────
+
+export interface DiaryDraft {
+  id: string;
+  profile_id: string;
+  title: string | null;
+  content: string | null;
+  mood: string | null;
+  gratitude: string | null;
+  goals: string | null;
+  reflections: string | null;
+  journal_type: string | null;
+  tags: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DiaryDraftInsert {
+  profile_id: string;
+  title?: string | null;
+  content?: string | null;
+  mood?: string | null;
+  gratitude?: string | null;
+  goals?: string | null;
+  reflections?: string | null;
+  journal_type?: string;
+  tags?: string[];
+}
+
+export interface DiaryDraftUpdate {
+  title?: string | null;
+  content?: string | null;
+  mood?: string | null;
+  gratitude?: string | null;
+  goals?: string | null;
+  reflections?: string | null;
+  journal_type?: string;
+  tags?: string[];
+}
+
+// ──────────────────────────────────────────────
 // DATABASE TYPE (for typed Supabase client)
 // ──────────────────────────────────────────────
 
@@ -698,6 +1273,23 @@ export interface Database {
       achievements: { Row: Achievement; Insert: AchievementInsert; Update: Record<string, never> };
       notifications: { Row: Notification; Insert: NotificationInsert; Update: NotificationUpdate };
       audit_logs: { Row: AuditLog; Insert: AuditLogInsert; Update: Record<string, never> };
+      clubs: { Row: Club; Insert: ClubInsert; Update: ClubUpdate };
+      club_members: { Row: ClubMember; Insert: ClubMemberInsert; Update: ClubMemberUpdate };
+      kalyanmitra_groups: { Row: KalyanmitraGroup; Insert: KalyanmitraGroupInsert; Update: KalyanmitraGroupUpdate };
+      kalyanmitra_members: { Row: KalyanmitraMember; Insert: KalyanmitraMemberInsert; Update: KalyanmitraMemberUpdate };
+      organization_members: { Row: OrganizationMember; Insert: OrganizationMemberInsert; Update: OrganizationMemberUpdate };
+      forum_categories: { Row: ForumCategory; Insert: ForumCategoryInsert; Update: ForumCategoryUpdate };
+      forum_topics: { Row: ForumTopic; Insert: ForumTopicInsert; Update: ForumTopicUpdate };
+      forum_posts: { Row: ForumPost; Insert: ForumPostInsert; Update: ForumPostUpdate };
+      forum_likes: { Row: ForumLike; Insert: ForumLikeInsert; Update: Record<string, never> };
+      chat_conversations: { Row: ChatConversation; Insert: ChatConversationInsert; Update: ChatConversationUpdate };
+      chat_participants: { Row: ChatParticipant; Insert: ChatParticipantInsert; Update: ChatParticipantUpdate };
+      chat_messages: { Row: ChatMessage; Insert: ChatMessageInsert; Update: ChatMessageUpdate };
+      chat_reactions: { Row: ChatReaction; Insert: ChatReactionInsert; Update: Record<string, never> };
+      community_feeds: { Row: CommunityFeed; Insert: CommunityFeedInsert; Update: CommunityFeedUpdate };
+      event_submissions: { Row: EventSubmission; Insert: EventSubmissionInsert; Update: EventSubmissionUpdate };
+      diary_entries: { Row: DiaryEntry; Insert: DiaryEntryInsert; Update: DiaryEntryUpdate };
+      diary_drafts: { Row: DiaryDraft; Insert: DiaryDraftInsert; Update: DiaryDraftUpdate };
     };
   };
 }

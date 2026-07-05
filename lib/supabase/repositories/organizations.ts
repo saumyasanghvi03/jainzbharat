@@ -1,5 +1,6 @@
 import { getSupabaseServerClient } from '../server';
 import type { Organization, OrganizationInsert, OrganizationUpdate } from '../types';
+import { hasSignedDeclaration } from './clubs';
 
 export interface ListOrganizationsOptions {
   limit?: number;
@@ -30,6 +31,14 @@ export async function getOrganizationBySlug(slug: string): Promise<Organization 
 }
 
 export async function createOrganization(input: OrganizationInsert): Promise<Organization | null> {
+  const supabase = getSupabaseServerClient();
+  const { data } = await (supabase.from('organizations') as any).insert(input).select().maybeSingle();
+  return data as Organization | null;
+}
+
+export async function createOrganizationWithCheck(input: OrganizationInsert & { founder_profile_id: string }): Promise<Organization | null> {
+  const canCreate = await hasSignedDeclaration(input.founder_profile_id);
+  if (!canCreate) return null;
   const supabase = getSupabaseServerClient();
   const { data } = await (supabase.from('organizations') as any).insert(input).select().maybeSingle();
   return data as Organization | null;
