@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JainZBharat | Declaration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(249, 115, 22, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        body {
+            background-color: #080b12;
+            color: #e0e2ed;
+            scrollbar-width: thin;
+            scrollbar-color: #32353d #080b12;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb690",
+                        "outline-variant": "#584237",
+                        "inverse-on-surface": "#2d3038",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-variant": "#32353d",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#e0c0b1",
+                        "primary": "#ffb690",
+                        "inverse-primary": "#9d4300",
+                        "inverse-surface": "#e0e2ed",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-container-lowest": "#0b0e15",
+                        "primary-fixed": "#ffdbca",
+                        "surface": "#10131b",
+                        "on-background": "#e0e2ed",
+                        "tertiary": "#ffb95f",
+                        "on-tertiary": "#472a00",
+                        "secondary-container": "#00a572",
+                        "on-secondary": "#003824",
+                        "surface-bright": "#363941",
+                        "on-primary": "#552100",
+                        "outline": "#a78b7d",
+                        "background": "#10131b",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-low": "#181b23",
+                        "surface-tint": "#ffb690",
+                        "on-primary-fixed-variant": "#783200",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-container": "#582200",
+                        "primary-container": "#f97316",
+                        "tertiary-container": "#d78900",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-tertiary-container": "#492c00",
+                        "on-secondary-container": "#00311f",
+                        "surface-container": "#1d2027",
+                        "surface-container-high": "#272a32",
+                        "secondary": "#4edea3",
+                        "on-surface": "#e0e2ed",
+                        "surface-container-highest": "#32353d",
+                        "surface-dim": "#10131b",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-primary-fixed": "#341100",
+                        "secondary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Space Grotesk"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-3xl flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 border-b border-white/10">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">JainZBharat</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity cursor-pointer">account_circle</span>
+</div>
+</nav>
+<!-- Side Navigation (Desktop Only) -->
+<aside class="fixed left-0 top-0 h-full w-72 z-40 bg-surface/60 dark:bg-surface/60 backdrop-blur-2xl border-r border-white/10 hidden lg:flex flex-col py-24 px-6">
+<div class="mb-12">
+<div class="font-headline-md text-headline-md text-primary font-bold">Dharma Path</div>
+<p class="text-on-surface-variant opacity-60 font-label-md text-label-md mt-1">Sovereign Tech-Spirituality</p>
+</div>
+<nav class="space-y-4">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-primary-container/20 text-primary border-r-4 border-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md">Read</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-md">Sign</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md">Done</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-4 rounded-xl glass-card text-primary font-label-md hover:bg-white/10 transition-all">
+                Learn More
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="lg:ml-72 pt-24 pb-32 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Left Column: The Declaration -->
+<div class="xl:col-span-8">
+<!-- Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-md mb-6">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                    Sign Declaration
+                </div>
+<h1 class="font-headline-xl text-headline-xl mb-4 leading-tight">
+                    Add your signature to the <span class="text-primary">JainZBharat</span> Declaration.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8">
+                    This signature creates a permanent record on the Bharat Ledger, anchored to your unique JainZ ID. 
+                    Be part of the foundational consensus of digital dharma.
+                </p>
+<!-- Meta Card -->
+<div class="glass-card p-6 rounded-2xl flex items-center gap-8 mb-12">
+<div>
+<span class="text-on-surface-variant opacity-60 font-label-md block mb-1 uppercase tracking-wider">Version</span>
+<span class="px-2 py-0.5 rounded bg-white/10 text-white font-mono text-sm">v1.0</span>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div>
+<span class="text-on-surface-variant opacity-60 font-label-md block mb-1 uppercase tracking-wider">Publication Date</span>
+<span class="text-white font-medium">July 4, 2026</span>
+</div>
+<div class="ml-auto flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">public</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary/20 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">shield</span>
+</div>
+</div>
+</div>
+<!-- Preamble Section -->
+<section class="mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4 flex items-center gap-3">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Preamble
+                    </h2>
+<p class="font-body-lg text-body-lg leading-relaxed text-on-surface/90">
+                        We, the seekers of digital sovereignty, commit to a future where wisdom informs innovation and compassion guides our connectivity. In an age of algorithmic noise, we anchor ourselves to the eternal principles of non-violence and absolute truth, ensuring that the technology we build serves the upliftment of all sentient life.
+                    </p>
+</section>
+<!-- Our Principles Section -->
+<section class="mb-16">
+<h2 class="font-headline-md text-headline-md text-secondary mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined">grid_view</span>
+                        Our Principles
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-primary-fixed-dim font-headline-md text-headline-md mb-2">Ahimsa</h3>
+<p class="text-on-surface-variant text-body-sm">Commitment to compassion and non-harm in every digital interaction.</p>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-tertiary-fixed-dim font-headline-md text-headline-md mb-2">Satya</h3>
+<p class="text-on-surface-variant text-body-sm">Unwavering dedication to data integrity and verifiable truth.</p>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-secondary-fixed-dim font-headline-md text-headline-md mb-2">Asteya</h3>
+<p class="text-on-surface-variant text-body-sm">Respect for digital property and non-stealing of intellectual effort.</p>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-primary-fixed-dim font-headline-md text-headline-md mb-2">Brahmacharya</h3>
+<p class="text-on-surface-variant text-body-sm">Mindfulness in digital consumption and focused attention.</p>
+</div>
+<!-- Card 5 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-tertiary-fixed-dim font-headline-md text-headline-md mb-2">Aparigraha</h3>
+<p class="text-on-surface-variant text-body-sm">Non-attachment to vanity metrics and decentralized ownership.</p>
+</div>
+<!-- Card 6 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-secondary-fixed-dim font-headline-md text-headline-md mb-2">Anekantavada</h3>
+<p class="text-on-surface-variant text-body-sm">Embracing pluralism and multiple perspectives in network consensus.</p>
+</div>
+<!-- Card 7 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-primary-fixed-dim font-headline-md text-headline-md mb-2">Tapasya</h3>
+<p class="text-on-surface-variant text-body-sm">The discipline of rigorous security and algorithmic purity.</p>
+</div>
+<!-- Card 8 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-tertiary-fixed-dim font-headline-md text-headline-md mb-2">Seva</h3>
+<p class="text-on-surface-variant text-body-sm">Service to the community through open-source contributions.</p>
+</div>
+<!-- Card 9 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-secondary-fixed-dim font-headline-md text-headline-md mb-2">Karuna</h3>
+<p class="text-on-surface-variant text-body-sm">Empathy encoded into UI design and community moderation.</p>
+</div>
+<!-- Card 10 -->
+<div class="glass-card p-6 rounded-2xl transition-all hover:translate-y-[-4px]">
+<h3 class="text-primary-fixed-dim font-headline-md text-headline-md mb-2">Samatva</h3>
+<p class="text-on-surface-variant text-body-sm">Maintaining equanimity amidst market and network volatility.</p>
+</div>
+</div>
+</section>
+<!-- Pledge Section -->
+<section class="mb-16 border-l-4 border-primary pl-8 py-4">
+<h2 class="font-headline-md text-headline-md text-on-surface-variant mb-4 uppercase tracking-widest text-sm opacity-60">The JainZ Pledge</h2>
+<p class="italic font-headline-md text-headline-md leading-relaxed text-on-surface">
+                        "I choose character over comfort, and collective wisdom over individual vanity. I pledge my node, my identity, and my intent to the flourishing of the Bharat ecosystem."
+                    </p>
+</section>
+<!-- CTA Button -->
+<button class="group relative px-12 py-5 bg-[#f97316] text-white rounded-2xl font-headline-md text-headline-md transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(249,115,22,0.5)]">
+<span class="flex items-center gap-3">
+                        Continue to Sign
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</span>
+</button>
+</div>
+<!-- Right Column: Sticky Sidebar -->
+<div class="xl:col-span-4 space-y-6">
+<div class="sticky top-24">
+<!-- Benefits Card -->
+<div class="glass-card p-8 rounded-3xl mb-6 relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 blur-3xl rounded-full"></div>
+<h3 class="font-headline-md text-headline-md text-white mb-6">What happens when you sign?</h3>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white" data-weight="fill">check</span>
+</div>
+<span class="text-on-surface-variant leading-tight">Identity anchored on-chain with cryptographic finality</span>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white" data-weight="fill">check</span>
+</div>
+<span class="text-on-surface-variant leading-tight">Unlock Sovereign Citizen status within the DAO</span>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] text-white" data-weight="fill">check</span>
+</div>
+<span class="text-on-surface-variant leading-tight">Access to Civilizational Protocols and JainZ treasury</span>
+</li>
+</ul>
+</div>
+<!-- User Profile Card -->
+<div class="glass-card p-6 rounded-3xl flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-amber-500 flex items-center justify-center font-headline-md text-3xl text-on-primary">
+                            S
+                        </div>
+<div>
+<div class="text-white font-headline-md text-xl leading-none">Siddharth Jain</div>
+<div class="text-on-surface-variant opacity-60 font-body-sm mt-1">siddharth@jainz.io</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400">Identity Verified</span>
+</div>
+</div>
+</div>
+<!-- Visual Accent -->
+<div class="mt-8 rounded-3xl overflow-hidden glass-card aspect-square relative flex items-center justify-center">
+
+<div class="relative z-10 text-center p-8">
+<span class="material-symbols-outlined text-6xl text-primary opacity-50 mb-4">diamond</span>
+<p class="font-label-md text-on-surface-variant opacity-60 italic">"Purity through technology"</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Progress Stepper -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-2xl border-t border-white/10 px-4 py-6">
+<div class="max-w-xl mx-auto flex justify-between items-center relative">
+<!-- Progress Line -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-white/10 -z-10"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-[2px] bg-primary-container -z-10"></div>
+<!-- Steps -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white ring-8 ring-background">
+<span class="material-symbols-outlined text-xl">menu_book</span>
+</div>
+<span class="font-label-md text-primary">Read</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-white/20 flex items-center justify-center text-on-surface-variant ring-8 ring-background">
+<span class="material-symbols-outlined text-xl">edit_note</span>
+</div>
+<span class="font-label-md text-on-surface-variant/50">Sign</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-white/20 flex items-center justify-center text-on-surface-variant ring-8 ring-background">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<span class="font-label-md text-on-surface-variant/50">Done</span>
+</div>
+</div>
+</div>
+<!-- Mobile Bottom Nav Placeholder (Aligned with Shared Components) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container/80 backdrop-blur-2xl border-t border-white/10 rounded-t-xl hidden">
+<div class="flex flex-col items-center justify-center text-primary-container p-2">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md">Read</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/50 p-2">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-md">Sign</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant/50 p-2">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md">Done</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

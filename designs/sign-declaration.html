@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Declaration Signed - JainZBharat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#002113",
+                    "secondary": "#4edea3",
+                    "on-primary": "#552100",
+                    "tertiary": "#ffb95f",
+                    "inverse-primary": "#9d4300",
+                    "surface-container": "#1d2027",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#2d3038",
+                    "primary": "#ffb690",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#ffdbca",
+                    "on-primary-fixed-variant": "#783200",
+                    "on-surface": "#e0e2ed",
+                    "primary-fixed-dim": "#ffb690",
+                    "secondary-container": "#00a572",
+                    "error-container": "#93000a",
+                    "surface-bright": "#363941",
+                    "surface-container-low": "#181b23",
+                    "surface": "#10131b",
+                    "primary-container": "#f97316",
+                    "on-secondary-container": "#00311f",
+                    "surface-variant": "#32353d",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-primary-container": "#582200",
+                    "surface-container-highest": "#32353d",
+                    "on-background": "#e0e2ed",
+                    "tertiary-fixed": "#ffddb8",
+                    "inverse-surface": "#e0e2ed",
+                    "on-primary-fixed": "#341100",
+                    "secondary-fixed-dim": "#4edea3",
+                    "background": "#10131b",
+                    "on-tertiary-container": "#492c00",
+                    "on-surface-variant": "#e0c0b1",
+                    "on-tertiary": "#472a00",
+                    "outline-variant": "#584237",
+                    "surface-container-high": "#272a32",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0b0e15",
+                    "tertiary-container": "#d78900",
+                    "outline": "#a78b7d",
+                    "surface-dim": "#10131b",
+                    "surface-tint": "#ffb690",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-secondary": "#003824",
+                    "tertiary-fixed-dim": "#ffb95f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "caption": ["Inter"],
+                    "display-lg-mobile": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #080b12; }
+        .glass-card {
+            background: rgba(29, 32, 39, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .border-glow {
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+        }
+        .orb-glow {
+            filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4));
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-display-lg text-primary tracking-tighter">JainZBharat</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<span class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-300 cursor-pointer">Manifesto</span>
+<span class="text-on-surface-variant font-body-md hover:text-secondary transition-colors duration-300 cursor-pointer">Network</span>
+<span class="text-primary font-bold border-b-2 border-primary pb-1">Governance</span>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer text-3xl" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-40 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Success Content -->
+<div class="lg:col-span-8 flex flex-col items-center text-center">
+<div class="mb-8 relative">
+<div class="absolute inset-0 bg-secondary/20 blur-3xl rounded-full"></div>
+<span class="material-symbols-outlined text-[120px] text-secondary relative z-10" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-4">Declaration Signed</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    Your digital sovereignty has been successfully anchored to the JainZBharat collective consciousness. Your voice is now part of the eternal immutable record.
+                </p>
+<!-- ID & QR Block -->
+<div class="glass-card p-8 rounded-3xl w-full max-w-lg mb-12 border-glow">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="text-left flex-1">
+<span class="font-label-md text-secondary block mb-2">SOVEREIGN IDENTITY</span>
+<div class="font-mono text-3xl tracking-wider text-on-surface bg-surface-container-low px-4 py-3 rounded-lg border border-outline-variant/30">
+                                JZ-9823-X
+                            </div>
+<p class="font-caption text-on-surface-variant mt-4">Verified via Distributed Protocol V.2.04</p>
+</div>
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/10 blur-xl group-hover:bg-primary/20 transition-all"></div>
+<div class="w-32 h-32 glass-card rounded-2xl flex items-center justify-center p-2 relative z-10">
+<img class="w-full h-full object-contain opacity-90" data-alt="A minimalist high-tech QR code rendered as an illuminated glass artifact with emerald green glowing lines. The design is set against a dark navy techno-mysticism background with subtle geometric light refractions, symbolizing secure digital identity and blockchain connectivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBku5ZgGa_TNy1086-S1RPM4VtyrNrzS0slNYD0XCYJM8x1s-m-fYF75XwoLQWal6vD-1-VIxM9RfrxoHds5XZ1PVtSlUsKaaKqxVx2LRZrGGf0HJbKqbPlNHBxbHUDvA5ZNNtAE9fTDCyaRtB4mpDTYzlDN-KxDP_z6EngtM5We_u87f7gJTyZj1r8rGfl85nfS_mUCkoE__kAYRX_mRaZK0ocAm-Ix-jwsH3e5XC6ZHQw8UhY6Qv8Dar9ZJHI5dq9AgT4tmKNJGI"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-label-md hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                        Download Certificate
+                    </button>
+<button class="glass-card border border-white/20 text-on-surface px-8 py-4 rounded-full font-label-md hover:bg-surface-variant/50 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+                        Get Digital Badge
+                    </button>
+<button class="glass-card border border-white/20 text-on-surface px-8 py-4 rounded-full font-label-md hover:bg-surface-variant/50 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                        View Signing Wall
+                    </button>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<!-- Welcome Card -->
+<div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-tertiary/10 rounded-full blur-3xl group-hover:bg-tertiary/20 transition-all"></div>
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md mb-3">Welcome to the Community</h3>
+<p class="font-body-md text-on-surface-variant mb-6">
+                        You have taken the first step towards spiritual connectivity. Explore the DAO proposals or join the next collective meditation session.
+                    </p>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low border border-white/5 cursor-pointer hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-md">Join Global Plaza</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-surface-container-low border border-white/5 cursor-pointer hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<span class="font-label-md">Explore Roadmap</span>
+</div>
+</div>
+</div>
+<!-- Progress Orb Card -->
+<div class="glass-card p-8 rounded-3xl">
+<h4 class="font-label-md text-on-surface-variant uppercase tracking-widest mb-6">Network Status</h4>
+<div class="flex items-center gap-6">
+<div class="relative w-16 h-16 flex items-center justify-center">
+<div class="absolute inset-0 border-4 border-surface-variant rounded-full"></div>
+<div class="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin-slow"></div>
+<span class="material-symbols-outlined text-primary orb-glow" data-icon="vibration">vibration</span>
+</div>
+<div>
+<p class="font-headline-md text-on-surface">Synchronized</p>
+<p class="font-caption text-secondary">Node active in Ahmedabad Cluster</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Responsive) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container/60 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center px-4 py-3 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Read</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2">
+<span class="material-symbols-outlined" data-icon="draw">draw</span>
+<span class="font-label-md text-label-md">Sign</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-6 py-2 scale-90">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Done</span>
+</div>
+</div>
+<!-- Desktop Footer -->
+<footer class="hidden md:flex w-full relative mt-auto bg-surface-container-lowest border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 gap-4">
+<div class="font-caption text-caption text-on-surface-variant">
+            © 2024 JainZBharat. Digital Sovereignty &amp; Spiritual Connectivity.
+        </div>
+<div class="flex gap-8">
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-secondary transition-colors" href="#">Support</a>
+</div>
+</footer>
+<!-- Animated Shader Background (Subtle Atmospheric Layer) -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-30">
+
+</div>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.95)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install
+
+      - run: pnpm lint
+
+      - run: pnpm typecheck
+
+      - run: pnpm test
+
+      - run: pnpm build
+        env:
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_ci
+          CLERK_SECRET_KEY: sk_test_ci
+          NEXT_PUBLIC_SUPABASE_URL: https://ci-project.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ci_anon_key
+          SUPABASE_SERVICE_ROLE_KEY: ci_service_role_key
+          RESEND_API_KEY: re_ci
+          NEXT_PUBLIC_POSTHOG_KEY: phc_ci
+          NEXT_PUBLIC_POSTHOG_HOST: https://us.i.posthog.com
+          NEXT_PUBLIC_SENTRY_DSN: https://ci@sentry.io/ci
+          NEXT_PUBLIC_MAPBOX_TOKEN: pk.ci
+          STRIPE_SECRET_KEY: sk_test_ci
+          STRIPE_WEBHOOK_SECRET: whsec_ci

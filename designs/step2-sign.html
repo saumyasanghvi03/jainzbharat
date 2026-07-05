@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Declaration | JainZBharat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#472a00",
+                    "on-secondary-fixed-variant": "#005236",
+                    "inverse-primary": "#9d4300",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#341100",
+                    "primary": "#ffb690",
+                    "error-container": "#93000a",
+                    "surface-bright": "#363941",
+                    "surface-tint": "#ffb690",
+                    "on-tertiary-fixed": "#2a1700",
+                    "error": "#ffb4ab",
+                    "outline": "#a78b7d",
+                    "tertiary": "#ffb95f",
+                    "outline-variant": "#584237",
+                    "inverse-on-surface": "#2d3038",
+                    "on-secondary-container": "#00311f",
+                    "surface-dim": "#10131b",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#32353d",
+                    "background": "#080b12",
+                    "on-secondary-fixed": "#002113",
+                    "on-secondary": "#003824",
+                    "on-primary-container": "#582200",
+                    "tertiary-fixed": "#ffddb8",
+                    "surface-container": "#1d2027",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-surface-variant": "#e0c0b1",
+                    "surface-container-high": "#272a32",
+                    "primary-fixed-dim": "#ffb690",
+                    "primary-container": "#f97316",
+                    "on-primary-fixed-variant": "#783200",
+                    "surface": "#10131b",
+                    "surface-container-lowest": "#0b0e15",
+                    "surface-container-low": "#181b23",
+                    "secondary": "#4edea3",
+                    "tertiary-container": "#d78900",
+                    "surface-container-highest": "#32353d",
+                    "secondary-fixed-dim": "#4edea3",
+                    "secondary-container": "#00a572",
+                    "on-surface": "#e0e2ed",
+                    "on-tertiary-container": "#492c00",
+                    "primary-fixed": "#ffdbca",
+                    "on-primary": "#552100",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-background": "#e0e2ed",
+                    "inverse-surface": "#e0e2ed"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "margin-desktop": "64px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Space Grotesk"],
+                    "caption": ["Inter"],
+                    "display-lg": ["Space Grotesk"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Space Grotesk"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #080b12;
+            color: #e0e2ed;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(16, 19, 27, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+            outline: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .nav-active {
+            color: #f97316;
+        }
+        .orb-glow {
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4));
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-primary-container/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-3xl border-b border-white/10 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container font-bold" style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">JainZBharat</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:opacity-80 transition-opacity active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="hover:opacity-80 transition-opacity active:scale-95 text-primary">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex fixed left-0 top-0 h-full w-72 z-40 bg-surface/60 backdrop-blur-2xl border-r border-white/10 flex-col py-24 px-6">
+<div class="mb-10 px-2">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Dharma Path</h2>
+<p class="font-label-md text-label-md text-on-surface-variant/60 uppercase tracking-widest mt-1">Sovereign Tech-Spirituality</p>
+</div>
+<nav class="space-y-2 flex-grow">
+<a class="flex items-center gap-4 py-3 px-4 rounded-xl text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Read</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 rounded-xl bg-primary-container/20 text-primary border-r-4 border-primary transition-colors" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-md text-label-md">Sign</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 rounded-xl text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Done</span>
+</a>
+</nav>
+<div class="mt-auto glass-card p-4 rounded-2xl border-primary/20">
+<p class="font-caption text-caption text-on-surface-variant mb-3">Expand your spiritual sovereignty.</p>
+<button class="w-full bg-primary-container text-on-primary-container rounded-full py-2 font-label-md text-label-md hover:opacity-90 transition-opacity">
+                Learn More
+            </button>
+</div>
+</aside>
+<!-- Background Shader -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
+
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary-container/5 blur-[150px] rounded-full"></div>
+</div>
+<!-- Main Content -->
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop lg:pl-80 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Form -->
+<section class="lg:col-span-8">
+<div class="glass-card rounded-3xl p-8 md:p-12 border-white/5">
+<header class="mb-10">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Your Details</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Fill in your details to be featured on the public signing wall.</p>
+</header>
+<div class="mb-10 flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A professional and serene headshot of a person with a neutral expression, set against a blurred background of a modern digital office with warm orange accent lighting and cool dark tones. The style is clean, modern, and high-fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7VWyCzJuMqwFVhaa_dcRZoT4lqUZ1Hc8GewhbANYEIee2G7nmIZeIP7Ie8pfBuBz4ngMFBfTmAtkLL5XpqYZOf9l0dJ6BFHdG83QoKCNtejSbzQwS_mBwnEWSOuQ3Kdu21X4gsxnPXIM19HhDQiadTA7qN3FzLugnqboQMt9WbsUke6-Lub1ISXieapP4njEJc2B65NkOHWaopFAr2415x47J7VHWFKzh5qTd-3r3mNNplRCTDUHrBauqjK5mbuMOGimRvKrMb8E"/>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant/60 uppercase tracking-tighter">Signed in as</p>
+<p class="font-body-lg text-body-lg font-semibold text-primary">Anand Vardhan</p>
+</div>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant px-1">Country <span class="text-primary">*</span></label>
+<input class="glass-input w-full px-5 py-3 rounded-xl text-on-surface placeholder:text-on-surface-variant/30" placeholder="e.g. Bharat" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant px-1">City <span class="text-primary">*</span></label>
+<input class="glass-input w-full px-5 py-3 rounded-xl text-on-surface placeholder:text-on-surface-variant/30" placeholder="e.g. New Delhi" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant px-1">Profession <span class="text-primary">*</span></label>
+<input class="glass-input w-full px-5 py-3 rounded-xl text-on-surface placeholder:text-on-surface-variant/30" placeholder="e.g. Software Architect" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant px-1">Organization <span class="text-on-surface-variant/40 font-normal">(Optional)</span></label>
+<input class="glass-input w-full px-5 py-3 rounded-xl text-on-surface placeholder:text-on-surface-variant/30" placeholder="e.g. Ethos Tech" type="text"/>
+</div>
+</div>
+<div class="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center gap-4">
+<button class="w-full sm:w-auto px-8 py-4 rounded-full bg-primary-container text-on-primary-container font-headline-md text-headline-md font-bold flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all" type="submit">
+                            Sign Declaration
+                            <span class="material-symbols-outlined">digital_out_of_home</span>
+</button>
+<button class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/10 text-on-surface-variant font-label-md text-label-md hover:bg-white/5 transition-all" type="button">
+                            Back
+                        </button>
+</div>
+<p class="font-caption text-caption text-on-surface-variant/50 max-w-lg">
+                        By signing, you agree to the JainZBharat digital charter and the principles of non-violence, truth, and technological sovereignty. Your signature will be cryptographically anchored.
+                    </p>
+</form>
+</div>
+</section>
+<!-- Right Column: Sidebar -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="sticky top-24 space-y-6">
+<!-- Karma Tiers Card -->
+<div class="glass-card rounded-3xl p-6 border-secondary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-secondary/10 blur-2xl rounded-full"></div>
+<div class="flex items-center gap-4 mb-4">
+<div class="p-3 bg-secondary/10 rounded-2xl">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">rewarded_ads</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Karma Tiers</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Your signature unlocks the first tier of digital citizenship.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white/5">
+<div class="w-10 h-10 rounded-full border-2 border-secondary/40 flex items-center justify-center text-secondary font-bold">1</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Signee Status</p>
+<p class="text-[10px] uppercase tracking-wider text-secondary">Current Goal</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl bg-white/5 opacity-40">
+<div class="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center text-white/40 font-bold">2</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Verified Builder</p>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant">Locked</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Verified Citizenship Graphic -->
+<div class="glass-card rounded-3xl p-6 border-white/5 text-center group">
+<div class="relative w-32 h-32 mx-auto mb-6">
+<div class="absolute inset-0 bg-primary-container/20 blur-xl rounded-full animate-pulse"></div>
+<div class="relative w-full h-full rounded-full border-2 border-primary/40 flex items-center justify-center float-anim">
+<span class="material-symbols-outlined text-primary text-5xl orb-glow" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Verified Citizen</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Upon signing, a unique NFT ID will be generated for your digital identity.</p>
+</div>
+<!-- Feature/Graphic -->
+<div class="rounded-3xl h-48 overflow-hidden relative border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A highly stylized, abstract digital artwork representing a global network of light. Golden and emerald green particles flow through a dark space, forming interconnected nodes that resemble both a circuit board and a constellation. The aesthetic is techno-mystical, representing collective consciousness and digital sovereignty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwk4az_QCaBVFe4_a8LNQ3aSy3DVUFWBIwMIrulMl7C9nhV8kOAwEm9OnUD7vArd3Z8GXqbFk2WCx-DeOdLoHYWGHp2nzPclkYLXhFju51PaC4JCuejlXzLb2QvHrFyZD4fdP7p6MccEDnYyjnfk-Gl6dDNQYPoFs8pXheSQHCgwrx2PZzq6IaVkUR8fyDBhwm0nDLn_X3O2y_Bx-6cn5fOiENJJZklc3FMRKqvbjwcfIOWFpr0GXhP11MGqMovECS1aRHrd3wPCE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="font-label-md text-label-md text-primary bg-primary-container/10 px-3 py-1 rounded-full border border-primary/20">The Network Wall</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar / Progress Indicator -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container/80 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center px-4 py-3 lg:px-64 h-20">
+<!-- Progress Item 1 -->
+<div class="flex flex-col items-center justify-center text-secondary p-2 transition-all duration-200">
+<div class="relative">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="absolute -right-16 top-1/2 -translate-y-1/2 h-[2px] w-12 bg-secondary/30 hidden sm:block"></div>
+</div>
+<span class="font-label-md text-label-md mt-1">Read</span>
+</div>
+<!-- Progress Item 2 -->
+<div class="flex flex-col items-center justify-center text-primary p-2 transition-all duration-200">
+<div class="relative">
+<div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">edit_note</span>
+</div>
+<div class="absolute -right-16 top-1/2 -translate-y-1/2 h-[2px] w-12 bg-white/10 hidden sm:block"></div>
+</div>
+<span class="font-label-md text-label-md mt-1">Sign</span>
+</div>
+<!-- Progress Item 3 -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant/30 p-2 transition-all duration-200">
+<div class="w-8 h-8 rounded-full border-2 border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<span class="font-label-md text-label-md mt-1">Done</span>
+</div>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').classList.add('text-secondary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').classList.remove('text-secondary');
+            });
+        });
+
+        // Floating elements logic
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb-glow');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach(orb => {
+                orb.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            });
+        });
+    </script>
+</body></html>
