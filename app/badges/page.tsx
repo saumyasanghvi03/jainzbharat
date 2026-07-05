@@ -133,7 +133,7 @@ export default function BadgesPage() {
                 <div>
                   <label className="text-sm font-medium">JainZ ID *</label>
                   <Input
-                    placeholder="JZB-2026-000001"
+                    placeholder="Your JainZ ID (e.g. JZB-2026-000002)"
                     className="mt-1 font-mono"
                     value={jainzId}
                     onChange={(e) => setJainzId(e.target.value.toUpperCase())}

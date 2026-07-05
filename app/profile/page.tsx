@@ -12,6 +12,7 @@ import { useEffect, useState, useCallback, FormEvent } from 'react';
 
 interface Cooldown { canEdit: boolean; remainingDays: number; nextEditAt: string | null }
 interface ProfileData { display_name: string; bio: string | null; country: string | null; city: string | null; profession: string | null; company: string | null }
+interface ProfileDb extends ProfileData { jainz_id: string; contribution_score: number; volunteer_hours: number; profile_edited_at: string | null }
 
 export default function ProfilePage() {
   const { user, isLoaded, isSignedIn } = useUser();
@@ -21,6 +22,7 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false);
   const [cooldown, setCooldown] = useState<Cooldown | null>(null);
   const [profile, setProfile] = useState<ProfileData>({ display_name: '', bio: '', country: '', city: '', profession: '', company: '' });
+  const [dbProfile, setDbProfile] = useState<ProfileDb | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   useEffect(() => {
@@ -28,17 +30,31 @@ export default function ProfilePage() {
   }, [isLoaded, isSignedIn, router]);
 
   useEffect(() => {
-    if (user) {
-      setProfile({
-        display_name: user.fullName ?? '',
-        bio: (user.publicMetadata as Record<string, string>)?.bio ?? '',
-        country: (user.publicMetadata as Record<string, string>)?.country ?? '',
-        city: (user.publicMetadata as Record<string, string>)?.city ?? '',
-        profession: (user.publicMetadata as Record<string, string>)?.profession ?? '',
-        company: (user.publicMetadata as Record<string, string>)?.company ?? '',
-      });
-      fetch('/api/profile').then(r => r.json()).then(setCooldown).catch(() => {});
-    }
+    if (!user) return;
+    setProfile({
+      display_name: user.fullName ?? '',
+      bio: '',
+      country: '',
+      city: '',
+      profession: '',
+      company: '',
+    });
+    Promise.all([
+      fetch('/api/profile').then(r => r.json()),
+      fetch('/api/profile/data').then(r => r.json()),
+    ]).then(([cd, pd]) => {
+      setCooldown(cd);
+      if (pd.profile) {
+        const p = pd.profile as ProfileDb;
+        setDbProfile(p);
+        if (p.display_name) setProfile(prev => ({ ...prev, display_name: p.display_name }));
+        if (p.bio) setProfile(prev => ({ ...prev, bio: p.bio }));
+        if (p.country) setProfile(prev => ({ ...prev, country: p.country }));
+        if (p.city) setProfile(prev => ({ ...prev, city: p.city }));
+        if (p.profession) setProfile(prev => ({ ...prev, profession: p.profession }));
+        if (p.company) setProfile(prev => ({ ...prev, company: p.company }));
+      }
+    }).catch(() => {});
   }, [user]);
 
   const handleSubmit = useCallback(async (e: FormEvent) => {
@@ -55,8 +71,12 @@ export default function ProfilePage() {
       if (res.ok) {
         setMessage({ type: 'success', text: 'Profile saved — next edit available in 7 days.' });
         setEditing(false);
-        const cd = await fetch('/api/profile').then(r => r.json());
+        const [cd, pd] = await Promise.all([
+          fetch('/api/profile').then(r => r.json()),
+          fetch('/api/profile/data').then(r => r.json()),
+        ]);
         setCooldown(cd);
+        if (pd.profile) setDbProfile(pd.profile);
       } else {
         setMessage({ type: 'error', text: data.error ?? 'Failed to save profile' });
       }
@@ -71,6 +91,8 @@ export default function ProfilePage() {
 
   const canEdit = cooldown?.canEdit ?? true;
   const remainingDays = cooldown?.remainingDays ?? 0;
+  const jainzId = dbProfile?.jainz_id ?? '';
+  const score = dbProfile?.contribution_score ?? 0;
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
@@ -88,8 +110,8 @@ export default function ProfilePage() {
           <Image src={user.imageUrl} alt="" width={96} height={96} className="mx-auto size-24 rounded-full" />
           <div className="mt-4 font-heading text-xl font-semibold">{user.fullName ?? 'User'}</div>
           <div className="mt-1 text-sm text-muted-foreground">{user.primaryEmailAddress?.emailAddress}</div>
-          <div className="mt-4 font-mono text-sm text-primary">{(user.publicMetadata as Record<string, string>)?.jainz_id ?? 'JZB-2026-000001'}</div>
-          <Badge variant="accent" className="mt-3">Pledge Signed</Badge>
+          {jainzId && <div className="mt-4 font-mono text-sm text-primary">{jainzId}</div>}
+          {!jainzId && <div className="mt-4 text-xs text-muted-foreground">Sign the declaration to receive your JainZ ID</div>}
         </Card>
 
         <div className="space-y-4">
@@ -112,19 +134,15 @@ export default function ProfilePage() {
                     {profile.profession && <div><span className="text-muted-foreground">Profession</span><p>{profile.profession}</p></div>}
                     {profile.company && <div><span className="text-muted-foreground">Company</span><p>{profile.company}</p></div>}
                   </div>
+                  {!profile.bio && !profile.country && !profile.city && !profile.profession && !profile.company && (
+                    <p className="text-muted-foreground italic">No details added yet.</p>
+                  )}
                 </div>
               </Card>
               <Card className="p-6">
                 <div className="font-heading text-lg font-semibold">Contribution Score</div>
-                <div className="mt-2 font-heading text-3xl text-primary">100</div>
-                <p className="mt-1 text-sm text-muted-foreground">Declaration signed · Badge earned</p>
-              </Card>
-              <Card className="p-6">
-                <div className="font-heading text-lg font-semibold">Badges</div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <Badge variant="default">Early Adopter</Badge>
-                  <Badge variant="secondary">Pledge Signer</Badge>
-                </div>
+                <div className="mt-2 font-heading text-3xl text-primary">{score}</div>
+                <p className="mt-1 text-sm text-muted-foreground">Earn points by signing the declaration and contributing.</p>
               </Card>
             </>
           ) : (

@@ -2,14 +2,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { platformModules, site } from '@/lib/site';
+import { getLiveCounts } from '@/lib/supabase/repositories/counts';
 import { ArrowRight, type LucideIcon, type LucideProps, LayoutDashboard, Users, GraduationCap, Briefcase, HeartHandshake, Brain, Building2, Calendar, BookOpen, Map, Shield, Activity, Globe, Sparkles } from 'lucide-react';
-
-const stats = [
-  { value: '12', label: 'Core Values' },
-  { value: '25+', label: 'Production Modules' },
-  { value: '195+', label: 'Countries Ready' },
-  { value: '100%', label: 'Open to Everyone' },
-];
 
 function TempleIcon({ className }: { className?: string }) {
   return (
@@ -38,14 +32,24 @@ const moduleIcons: Record<string, LucideIcon | ((props: { className?: string }) 
   ngos: Building2,
   events: Calendar,
   learning: BookOpen,
-  navkar: Activity,
-  map: Map,
+  'navkar-heatmap': Activity,
   admin: Shield,
 };
 
 const values = ['Ahimsa', 'Satya', 'Aparigraha', 'Anekantavada', 'Tapasya', 'Seva', 'Integrity', 'Innovation', 'Learning', 'Compassion', 'Respect', 'Responsibility'];
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const counts = await getLiveCounts();
+
+  const stats = [
+    { value: String(counts.totalProfiles), label: 'Signatories' },
+    { value: String(counts.totalCountries), label: 'Countries' },
+    { value: String(counts.totalClubs + counts.totalOrganizations || '0'), label: 'Communities' },
+    { value: String(counts.totalEvents || '0'), label: 'Events' },
+  ];
+
   return (
     <div>
       <section className="relative min-h-[819px] flex items-center justify-center px-5 md:px-16 py-20 overflow-hidden">
@@ -60,7 +64,7 @@ export default function Home() {
               The open digital civilization platform for values, contribution, and community.
             </h1>
             <p className="text-lg leading-relaxed text-muted-foreground mb-10 max-w-2xl mx-auto">
-              A global movement building a conscious digital ecosystem rooted in ancient wisdom and designed for modern humanity. Join us in creating a values-driven digital future.
+              A global movement building a conscious digital ecosystem rooted in ancient wisdom and designed for modern humanity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/declaration">
@@ -80,7 +84,7 @@ export default function Home() {
 
       <section className="py-20 px-5 md:px-16 max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary mb-2">Global Movement</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary mb-2">Live Counts</p>
           <h2 className="font-heading text-3xl font-semibold tracking-tight md:text-4xl text-white">Impact by the Numbers</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

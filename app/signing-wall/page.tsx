@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Card } from '@/components/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { listSignatures } from '@/lib/supabase/repositories/signatures';
 import { Users, Search, ArrowUpDown, ChevronLeft, ChevronRight, MapPin, Briefcase, Clock } from 'lucide-react';
@@ -15,14 +14,25 @@ function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-async function SigningWallContent({ searchParams: sp }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const params = await sp;
-  const page = Math.max(1, Number(params.page) || 1);
-  const search = typeof params.search === 'string' ? params.search : '';
-  const country = typeof params.country === 'string' ? params.country : '';
-  const profession = typeof params.profession === 'string' ? params.profession : '';
-  const sortBy = (typeof params.sortBy === 'string' && ['signed_at', 'display_name'].includes(params.sortBy) ? params.sortBy : 'signed_at') as 'signed_at' | 'display_name';
-  const sortOrder = (typeof params.sortOrder === 'string' && ['asc', 'desc'].includes(params.sortOrder) ? params.sortOrder : 'desc') as 'asc' | 'desc';
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+function buildQueryString(params: Record<string, string>): string {
+  const u = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => { if (v) u.set(k, v); });
+  const q = u.toString();
+  return q ? `?${q}` : '';
+}
+
+export default async function SigningWallPage({ searchParams }: PageProps) {
+  const sp = await searchParams;
+  const page = Math.max(1, Number(sp.page) || 1);
+  const search = typeof sp.search === 'string' ? sp.search : '';
+  const country = typeof sp.country === 'string' ? sp.country : '';
+  const profession = typeof sp.profession === 'string' ? sp.profession : '';
+  const sortBy = (typeof sp.sortBy === 'string' && ['signed_at', 'display_name'].includes(sp.sortBy) ? sp.sortBy : 'signed_at') as 'signed_at' | 'display_name';
+  const sortOrder = (typeof sp.sortOrder === 'string' && ['asc', 'desc'].includes(sp.sortOrder) ? sp.sortOrder : 'desc') as 'asc' | 'desc';
 
   const { data: signers, total } = await listSignatures({
     limit: ITEMS_PER_PAGE,
@@ -36,22 +46,7 @@ async function SigningWallContent({ searchParams: sp }: { searchParams: Promise<
 
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
 
-  function buildUrl(overrides: Record<string, string>) {
-    const u = new URLSearchParams();
-    if (search) u.set('search', search);
-    if (country) u.set('country', country);
-    if (profession) u.set('profession', profession);
-    if (sortBy !== 'signed_at') u.set('sortBy', sortBy);
-    if (sortOrder !== 'desc') u.set('sortOrder', sortOrder);
-    Object.entries(overrides).forEach(([k, v]) => { if (v) u.set(k, v); else u.delete(k); });
-    const q = u.toString();
-    return `/signing-wall${q ? `?${q}` : ''}`;
-  }
-
-  const toggleSort = (field: 'signed_at' | 'display_name') => {
-    if (sortBy === field) return buildUrl({ sortOrder: sortOrder === 'asc' ? 'desc' : 'asc' });
-    return buildUrl({ sortBy: field, sortOrder: 'asc' });
-  };
+  const currentParams = { search, country, profession, sortBy, sortOrder, page: String(page) };
 
   return (
     <main className="mx-auto max-w-7xl px-4 pb-32 pt-24 md:px-6">
@@ -66,36 +61,45 @@ async function SigningWallContent({ searchParams: sp }: { searchParams: Promise<
         {total} signator{total !== 1 ? 'ies' : 'y'} and counting. Every signature creates a permanent record with a unique JainZ ID.
       </p>
 
-      <div className="mt-8 rounded-3xl border border-white/10 bg-surface/50 p-4">
+      <form method="GET" action="/signing-wall" className="mt-8 rounded-3xl border border-white/10 bg-surface/50 p-4">
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-            <form>
-              <Input
-                name="search"
-                placeholder="Search by name..."
-                defaultValue={search}
-                className="pl-9"
-              />
-              {country && <input type="hidden" name="country" value={country} />}
-              {profession && <input type="hidden" name="profession" value={profession} />}
-              <input type="hidden" name="sortBy" value={sortBy} />
-              <input type="hidden" name="sortOrder" value={sortOrder} />
-            </form>
+            <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+            <Input
+              name="search"
+              placeholder="Search by name..."
+              defaultValue={search}
+              className="pl-9"
+            />
           </div>
           <div className="flex gap-2">
-            <a href={toggleSort('signed_at')} className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${sortBy === 'signed_at' ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}>
+            <input type="hidden" name="sortBy" value={sortBy} />
+            <input type="hidden" name="sortOrder" value={sortOrder} />
+            {country && <input type="hidden" name="country" value={country} />}
+            {profession && <input type="hidden" name="profession" value={profession} />}
+            <button
+              type="submit"
+              name="sortBy"
+              value="signed_at"
+              className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${sortBy === 'signed_at' ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
+            >
               <Clock className="size-3.5" />
               Date
               {sortBy === 'signed_at' && <ArrowUpDown className="size-3" />}
-            </a>
-            <a href={toggleSort('display_name')} className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${sortBy === 'display_name' ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}>
+            </button>
+            <button
+              type="submit"
+              name="sortBy"
+              value="display_name"
+              className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold transition-colors ${sortBy === 'display_name' ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
+            >
               <ArrowUpDown className="size-3.5" />
               Name
-            </a>
+            </button>
+            <input type="hidden" name="sortOrder" value={sortBy === 'display_name' ? (sortOrder === 'asc' ? 'desc' : 'asc') : 'asc'} />
           </div>
         </div>
-      </div>
+      </form>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {signers.length === 0 && (
@@ -139,9 +143,9 @@ async function SigningWallContent({ searchParams: sp }: { searchParams: Promise<
       {totalPages > 1 && (
         <div className="mt-12 flex items-center justify-center gap-2">
           {page > 1 && (
-            <a href={buildUrl({ page: String(page - 1) })} className="flex size-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors">
+            <Link href={`/signing-wall${buildQueryString({ ...currentParams, page: String(page - 1) })}`} className="flex size-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors">
               <ChevronLeft className="size-4" />
-            </a>
+            </Link>
           )}
           {Array.from({ length: Math.min(totalPages, 7) }, (_, i) => {
             let p: number;
@@ -155,28 +159,24 @@ async function SigningWallContent({ searchParams: sp }: { searchParams: Promise<
               p = page - 3 + i;
             }
             return (
-              <a
+              <Link
                 key={p}
-                href={buildUrl({ page: String(p) })}
+                href={`/signing-wall${buildQueryString({ ...currentParams, page: String(p) })}`}
                 className={`flex size-10 items-center justify-center rounded-full text-sm font-semibold transition-colors ${
                   p === page ? 'bg-primary text-white' : 'text-muted-foreground hover:bg-muted'
                 }`}
               >
                 {p}
-              </a>
+              </Link>
             );
           })}
           {page < totalPages && (
-            <a href={buildUrl({ page: String(page + 1) })} className="flex size-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors">
+            <Link href={`/signing-wall${buildQueryString({ ...currentParams, page: String(page + 1) })}`} className="flex size-10 items-center justify-center rounded-full border border-white/10 text-muted-foreground hover:border-primary/30 hover:text-primary transition-colors">
               <ChevronRight className="size-4" />
-            </a>
+            </Link>
           )}
         </div>
       )}
     </main>
   );
-}
-
-export default function SigningWallPage(props: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  return <SigningWallContent searchParams={props.searchParams} />;
 }
